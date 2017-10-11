@@ -181,7 +181,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Accueil
+            Startseite
           </a>
         </li>
       
@@ -191,7 +191,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -214,6 +214,255 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://ichosei.com/2017/10/11/node-js-刷新页面保存数据使用seesionStorage/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/11/node-js-刷新页面保存数据使用seesionStorage/" itemprop="url">node_js 刷新页面保存数据使用seesionStorage</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-11T19:17:24+08:00">
+                2017-10-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>//验证码<br>    var getGt = function () {<br>        var handler2 = function (captchaObj) {<br>            $(“#submit”).click(function (e) {<br>                $(‘.wrong-text’).html(‘’);<br>                var tel = $(‘#tel’).val()<br>                    , pwd = $(‘#pwd’).val();<br>                if (!tel) {<br>                    $(‘.prompt-name’).html(‘请输入登陆账号’);<br>                    return false;<br>                }else {<br>                    $(‘.prompt-name’).html(‘’);<br>                    if (!pwd) {<br>                        $(‘.prompt-pwd’).html(‘请输入密码’);<br>                        return false;<br>                    } else {<br>                        $(‘.prompt-pwd’).html(‘’);<br>                        var result = captchaObj.getValidate();<br>                        if (!result) {<br>                            $(“.prompt-code”).html(‘请完成验证’).show();<br>                            setTimeout(function () {<br>                                $(“.prompt-code”).html(‘’).hide();<br>                            }, 2000);<br>                        } else {<br>                            $(‘.prompt-name’).html(‘’);<br>                            $(‘.prompt-pwd’).html(‘’);<br>                            $(‘.prompt-code’).html(‘’).hide();<br>                            var data = {<br>                                    Account: tel<br>                                    , Pwd: pwd<br>                                    , keepL: $(‘#auto’).prop(‘checked’) ? 1 : 0,<br>                                    geetest_challenge: result.geetest_challenge,<br>                                    geetest_validate: result.geetest_validate,<br>                                    geetest_seccode: result.geetest_seccode<br>                                };<br>                            Data.login(data, function (json) {<br>                                console.log(json);<br>                                if (json &amp;&amp; ‘resCode’ in json &amp;&amp; json.resCode == 0) {<br>                                    location.reload();<br>                                    //$(‘#login_modal_element’).hide();<br>                                } else {<br>                                    captchaObj.reset();<br>                                    $(‘.wrong-text’).html(json.resMsg).removeClass(‘dp-n’);<br>                                }<br>                            });<br>                        }<br>                    }<br>                }<br>                e.preventDefault();<br>            });</p>
+<pre><code>        // 将验证码加到id为captcha的元素里，同时会有三个input的值用于表单提交
+        captchaObj.appendTo(&quot;#captcha&quot;);
+        $(&apos;#captcha&apos;).find(&apos;.geetest_holder&apos;).eq(0).remove();
+        captchaObj.onReady(function () {
+            $(&quot;#wait&quot;).hide();
+        });
+
+        // 更多接口参考：http://www.geetest.com/install/sections/idx-client-sdk.html
+    };
+    $.ajax({
+        url: &quot;/login/sendGt3?t=&quot; + (new Date()).getTime(), // 加随机数防止缓存
+        type: &quot;get&quot;,
+        dataType: &quot;json&quot;,
+        success: function (data) {
+
+            // 调用 initGeetest 初始化参数
+            // 参数1：配置参数
+            // 参数2：回调，回调的第一个参数验证码对象，之后可以使用它调用相应的接口
+            initGeetest({
+                gt: data.gt,
+                challenge: data.challenge,
+                new_captcha: data.new_captcha, // 用于宕机时表示是新验证码的宕机
+                offline: !data.success, // 表示用户后台检测极验服务器是否宕机，一般不需要关注
+                product: &quot;popup&quot;, // 产品形式，包括：float，popup
+                width: &quot;100%&quot;
+
+                // 更多配置参数请参见：http://www.geetest.com/install/sections/idx-client-sdk.html#config
+            }, handler2);
+        }
+    });
+};
+//submit
+        $(document).on(&apos;click&apos;, &apos;.xd&apos;, function () {
+        variable();
+        console.log(&apos;登陆前&apos;+subOrderNum);
+        sessionStorage.setItem(&apos;flightDate&apos;,flightDate);
+        sessionStorage.setItem(&apos;subOrderNum&apos;,subOrderNum);
+        sessionStorage.setItem(&apos;entrustNum&apos;,entrustNum);
+        sessionStorage.setItem(&apos;entrustWeight&apos;,entrustWeight);
+        sessionStorage.setItem(&apos;entrustSize&apos;,entrustSize);
+        console.log(&apos;取值&apos;+sessionStorage.getItem(&apos;subOrderNum&apos;));
+        if ($(&apos;.vip-part&apos;).length==0) {
+            //提示登录的窗口
+            Modal.setLoadVerify({
+                title: &quot;登录提醒&quot;, text: &quot;删除航线后，不会对已存在的订单产生影响&quot;, success: function () {
+                    console.log(3333333);
+                    getGt();
+                },error:function(){Modal.showLoadVerify(false)}
+            });
+        }else{
+            console.log(2);
+            var pass = true;
+            if (!$(&apos;#datetimepicker&apos;).val()) {
+                $(&apos;#datetimepicker&apos;).addClass(&apos;warm&apos;);
+                pass = false;
+            }
+            $(&apos;.wtxx&apos;).find(&apos;.a-require&apos;).each(function () {
+                if (!$(this).val()) {
+                    $(this).addClass(&apos;warm&apos;);
+                    pass = false;
+                } else {
+                    $(this).removeClass(&apos;warm&apos;);
+                }
+            });
+            if (pass) {
+                    var oldSum = $(&apos;#sum&apos;).val();
+                    var oldwei = $(&apos;#weight&apos;).val();
+                    var oldvol = $(&apos;#size&apos;).val();
+                    var newSum = $(&apos;#jsj&apos;).data(&apos;js&apos;);
+                    var newwei = $(&apos;#jsj&apos;).data(&apos;zl&apos;);
+                    var newvol = $(&apos;#jsj&apos;).data(&apos;tj&apos;);
+                    var ss = (oldSum == newSum) &amp;&amp; (oldwei == newwei) &amp;&amp; (oldvol == newvol);
+                    if (!ss) {
+                        Modal.setAlert(&apos;请重新计算价格&apos;);
+                    } else {
+
+                        var code = $(&apos;.sCode&apos;).html()
+                            , start = $(&apos;#start&apos;).html()
+                            , end = $(&apos;#end&apos;).html()
+                            , dt = $(&apos;#datetimepicker&apos;).val() + &apos; 00:00:00&apos;
+                            , size = $(&apos;#size&apos;).val()
+                            , weight = $(&apos;#weight&apos;).val()
+                            , num = $(&apos;#sum&apos;).val();
+
+                        if (code &amp;&amp; start &amp;&amp; end &amp;&amp; dt &amp;&amp; size &amp;&amp; weight &amp;&amp; num) {
+
+                            var data = {
+                                &quot;airwayId&quot;: url.get(&apos;id&apos;),
+                                &quot;deptCode&quot;: start,
+                                &quot;destCode&quot;: end,
+                                &quot;flightDate&quot;: dt,
+                                &quot;arrivalDate&quot;: &quot;&quot;,
+                                &quot;airCompanyCode&quot;: code,
+                                &quot;subOrderCount&quot;:$(&apos;.fds&apos;).val(),
+                                &quot;cargoName&quot;: &apos;&apos;,
+                                &quot;cargoType&quot;: 1,
+                                &quot;cargoCount&quot;: num,
+                                &quot;cargoWeight&quot;: weight,
+                                &quot;cargoSize&quot;: size,
+                                &quot;customDeclare&quot;: true
+                            };
+                            Data.order(data, function (json) {
+                                if (json &amp;&amp; &apos;resCode&apos; in json &amp;&amp; json.resCode == 0) {
+                                    location.href = &apos;./xdok&apos;;
+                                } else if (json &amp;&amp; &apos;resCode&apos; in json &amp;&amp; json.resCode == -100) {
+                                    location.href = &quot;/login&quot;;
+                                } else {
+                                    Modal.setAlert(json.resMsg || &apos;委托失败，请重试！&apos;);
+                                }
+                            });
+                        } else {
+
+                        }
+                    }
+                }
+            }
+    });
+    //登录完成之后
+    if($(&apos;.vip-part&apos;).length&gt;0){
+        variable();
+        $(&apos;.fds&apos;).val(&apos;赋值&apos;+sessionStorage.getItem(&apos;subOrderNum&apos;));
+        $(&apos;#size&apos;).val(&apos;赋值&apos;+sessionStorage.getItem(&quot;entrustSize&quot;));
+        $(&apos;#datetimepicker&apos;).val(&apos;赋值&apos;+sessionStorage.getItem(&quot;flightDate&quot;));
+        $(&apos;#sum&apos;).val(&apos;赋值&apos;+sessionStorage.getItem(&quot;entrustNum&quot;));
+        $(&apos;#weight&apos;).val(&apos;赋值&apos;+sessionStorage.getItem(&quot;entrustWeight&quot;));
+        console.log(&apos;登陆后&apos;+subOrderNum);
+        //$(&apos;#size&apos;).val(pageCookie.get(&quot;entrustSize&quot;));
+
+    }else{
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -257,7 +506,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posté le</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-11T18:33:49+08:00">
                 2017-10-11
@@ -377,7 +626,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posté le</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-11T18:00:19+08:00">
                 2017-10-11
@@ -497,7 +746,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posté le</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-11T09:42:46+08:00">
                 2017-10-11
@@ -617,7 +866,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posté le</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-11T09:28:35+08:00">
                 2017-10-11
@@ -749,8 +998,8 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
-                  <span class="site-state-item-name">articles</span>
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">Artikel</span>
                 </a>
               </div>
             
@@ -802,7 +1051,7 @@
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
@@ -810,7 +1059,7 @@
 
 
 
-  <div class="theme-info">Thème &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
 
 
 
