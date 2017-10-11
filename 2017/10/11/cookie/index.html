@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>cookie - Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="var pageCookie = {        set:function(key,val,time){//设置cookie方法            var date=new Date(); //获取当前时间            var expiresDays=time;  //将date设置为n天以后的时间            date.setTime(date.getTime()+ex">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cookie">
+<meta property="og:url" content="http://ichosei.com/2017/10/11/cookie/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="var pageCookie = {        set:function(key,val,time){//设置cookie方法            var date=new Date(); //获取当前时间            var expiresDays=time;  //将date设置为n天以后的时间            date.setTime(date.getTime()+ex">
+<meta property="og:updated_time" content="2017-10-11T10:34:34.233Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="cookie">
+<meta name="twitter:description" content="var pageCookie = {        set:function(key,val,time){//设置cookie方法            var date=new Date(); //获取当前时间            var expiresDays=time;  //将date设置为n天以后的时间            date.setTime(date.getTime()+ex">
+  
+  
+  <link href="/webfonts/ptserif/main.css" rel='stylesheet' type='text/css'>
+  <link href="/webfonts/source-code-pro/main.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
+      <a id="logo" class="logo" href="/"></a>
+      <nav id="main-nav">
+        
+      </nav>
+      <nav id="sub-nav">
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://ichosei.com"></form>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+    <section id="main" class="outer"><article id="post-cookie" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      cookie
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2017/10/11/cookie/" class="article-date">
+  <time datetime="2017-10-11T10:33:49.000Z" itemprop="datePublished">2017-10-11</time>
+</a>
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>var pageCookie = {<br>        set:function(key,val,time){//设置cookie方法<br>            var date=new Date(); //获取当前时间<br>            var expiresDays=time;  //将date设置为n天以后的时间<br>            date.setTime(date.getTime()+expiresDays<em>24</em>3600<em>1000); //格式化为cookie识别的时间<br>            document.cookie=key + “=” + val +”;expires=”+date.toGMTString();  //设置cookie<br>        },<br>        get:function(key){//获取cookie方法<br>            /</em>获取cookie参数*/<br>            var getCookie = document.cookie.replace(/[ ]/g,””);  //获取cookie，并且将获得的cookie格式化，去掉空格字符<br>            var arrCookie = getCookie.split(“;”);  //将获得的cookie以”分号”为标识 将cookie保存到arrCookie的数组中<br>            var tips;  //声明变量tips<br>            for(var i=0;i&lt;arrCookie.length;i++){   //使用for循环查找cookie中的tips变量<br>                var arr=arrCookie[i].split(“=”);   //将单条cookie用”等号”为标识，将单条cookie保存为arr数组<br>                if(key==arr[0]){  //匹配变量名称，其中arr[0]是指的cookie名称，如果该条变量为tips则执行判断语句中的赋值操作<br>                    tips=arr[1];   //将cookie的值赋给变量tips<br>                    break;   //终止for循环遍历<br>                }<br>            }<br>            return tips;<br>        },<br>        delete:function(key){ //删除cookie方法<br>            var date = new Date(); //获取当前时间<br>            date.setTime(date.getTime()-10000); //将date设置为过去的时间<br>            document.cookie = key + “=v; expires =” +date.toGMTString();//设置cookie<br>        }<br>    };<br>    //pageCookie.set(“flightDate”,flightDate,1);<br>    //pageCookie.set(“subOrderNum”,subOrderNum,1);<br>    //pageCookie.set(“entrustNum”,entrustNum,1);<br>    //pageCookie.set(“entrustWeight”,entrustWeight,1);<br>    //pageCookie.set(“entrustSize”,entrustSize,1);</p>
+
+      
+    </div>
+    
+    
+      <footer class="article-footer">
+        
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/10/11/块元素的显示隐藏/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">块元素的显示隐藏&nbsp;<span>&gt;</span></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+
+</section>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe&nbsp;
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, theme by <a href="http://github.com/ppoffice">PPOffice</a>
+    </div>
+  </div>
+</footer>
+    
+
+<script src="/js/jquery.min.js"></script>
+
+
+
+<script src="/js/script.js"></script>
+  </div>
+</body>
+</html>

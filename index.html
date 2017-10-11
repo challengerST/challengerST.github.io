@@ -39,6 +39,88 @@
   </div>
 </header>
     <section id="main" class="outer">
+      <article id="post-cookie" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/11/cookie/">cookie</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2017/10/11/cookie/" class="article-date">
+  <time datetime="2017-10-11T10:33:49.000Z" itemprop="datePublished">2017-10-11</time>
+</a>
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>var pageCookie = {<br>        set:function(key,val,time){//设置cookie方法<br>            var date=new Date(); //获取当前时间<br>            var expiresDays=time;  //将date设置为n天以后的时间<br>            date.setTime(date.getTime()+expiresDays<em>24</em>3600<em>1000); //格式化为cookie识别的时间<br>            document.cookie=key + “=” + val +”;expires=”+date.toGMTString();  //设置cookie<br>        },<br>        get:function(key){//获取cookie方法<br>            /</em>获取cookie参数*/<br>            var getCookie = document.cookie.replace(/[ ]/g,””);  //获取cookie，并且将获得的cookie格式化，去掉空格字符<br>            var arrCookie = getCookie.split(“;”);  //将获得的cookie以”分号”为标识 将cookie保存到arrCookie的数组中<br>            var tips;  //声明变量tips<br>            for(var i=0;i&lt;arrCookie.length;i++){   //使用for循环查找cookie中的tips变量<br>                var arr=arrCookie[i].split(“=”);   //将单条cookie用”等号”为标识，将单条cookie保存为arr数组<br>                if(key==arr[0]){  //匹配变量名称，其中arr[0]是指的cookie名称，如果该条变量为tips则执行判断语句中的赋值操作<br>                    tips=arr[1];   //将cookie的值赋给变量tips<br>                    break;   //终止for循环遍历<br>                }<br>            }<br>            return tips;<br>        },<br>        delete:function(key){ //删除cookie方法<br>            var date = new Date(); //获取当前时间<br>            date.setTime(date.getTime()-10000); //将date设置为过去的时间<br>            document.cookie = key + “=v; expires =” +date.toGMTString();//设置cookie<br>        }<br>    };<br>    //pageCookie.set(“flightDate”,flightDate,1);<br>    //pageCookie.set(“subOrderNum”,subOrderNum,1);<br>    //pageCookie.set(“entrustNum”,entrustNum,1);<br>    //pageCookie.set(“entrustWeight”,entrustWeight,1);<br>    //pageCookie.set(“entrustSize”,entrustSize,1);</p>
+
+      
+    </div>
+    
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+    
+      <article id="post-块元素的显示隐藏" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/11/块元素的显示隐藏/">块元素的显示隐藏</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2017/10/11/块元素的显示隐藏/" class="article-date">
+  <time datetime="2017-10-11T10:00:19.000Z" itemprop="datePublished">2017-10-11</time>
+</a>
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>例子是：</p>
+
+      
+    </div>
+    
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+    
       <article id="post-my-first-blog" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
