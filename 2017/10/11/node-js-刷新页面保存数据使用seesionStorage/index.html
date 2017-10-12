@@ -85,7 +85,7 @@
 <meta property="og:url" content="http://ichosei.com/2017/10/11/node-js-刷新页面保存数据使用seesionStorage/index.html">
 <meta property="og:site_name" content="chosen one">
 <meta property="og:description" content="//验证码    var getGt = function () {        var handler2 = function (captchaObj) {            $(“#submit”).click(function (e) {                $(‘.wrong-text’).html(‘’);                var tel = $(‘#tel">
-<meta property="og:updated_time" content="2017-10-11T11:19:42.872Z">
+<meta property="og:updated_time" content="2017-10-12T02:21:48.796Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="node_js 刷新页面保存数据使用seesionStorage">
 <meta name="twitter:description" content="//验证码    var getGt = function () {        var handler2 = function (captchaObj) {            $(“#submit”).click(function (e) {                $(‘.wrong-text’).html(‘’);                var tel = $(‘#tel">
@@ -184,7 +184,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -194,7 +194,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -258,7 +258,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-11T19:17:24+08:00">
                 2017-10-11
@@ -298,7 +298,7 @@
       
 
       
-        <p>//验证码<br>    var getGt = function () {<br>        var handler2 = function (captchaObj) {<br>            $(“#submit”).click(function (e) {<br>                $(‘.wrong-text’).html(‘’);<br>                var tel = $(‘#tel’).val()<br>                    , pwd = $(‘#pwd’).val();<br>                if (!tel) {<br>                    $(‘.prompt-name’).html(‘请输入登陆账号’);<br>                    return false;<br>                }else {<br>                    $(‘.prompt-name’).html(‘’);<br>                    if (!pwd) {<br>                        $(‘.prompt-pwd’).html(‘请输入密码’);<br>                        return false;<br>                    } else {<br>                        $(‘.prompt-pwd’).html(‘’);<br>                        var result = captchaObj.getValidate();<br>                        if (!result) {<br>                            $(“.prompt-code”).html(‘请完成验证’).show();<br>                            setTimeout(function () {<br>                                $(“.prompt-code”).html(‘’).hide();<br>                            }, 2000);<br>                        } else {<br>                            $(‘.prompt-name’).html(‘’);<br>                            $(‘.prompt-pwd’).html(‘’);<br>                            $(‘.prompt-code’).html(‘’).hide();<br>                            var data = {<br>                                    Account: tel<br>                                    , Pwd: pwd<br>                                    , keepL: $(‘#auto’).prop(‘checked’) ? 1 : 0,<br>                                    geetest_challenge: result.geetest_challenge,<br>                                    geetest_validate: result.geetest_validate,<br>                                    geetest_seccode: result.geetest_seccode<br>                                };<br>                            Data.login(data, function (json) {<br>                                console.log(json);<br>                                if (json &amp;&amp; ‘resCode’ in json &amp;&amp; json.resCode == 0) {<br>                                    location.reload();<br>                                    //$(‘#login_modal_element’).hide();<br>                                } else {<br>                                    captchaObj.reset();<br>                                    $(‘.wrong-text’).html(json.resMsg).removeClass(‘dp-n’);<br>                                }<br>                            });<br>                        }<br>                    }<br>                }<br>                e.preventDefault();<br>            });</p>
+        <p>//验证码<br>    var getGt = function () {<br>        var handler2 = function (captchaObj) {<br>            $(“#submit”).click(function (e) {<br>                $(‘.wrong-text’).html(‘’);<br>                var tel = $(‘#tel’).val()<br>                    , pwd = $(‘#pwd’).val();<br>                if (!tel) {<br>                    $(‘.prompt-name’).html(‘请输入登陆账号’);<br>                    return false;<br>                }else {<br>                    <a id="more"></a><br>                    $(‘.prompt-name’).html(‘’);<br>                    if (!pwd) {<br>                        $(‘.prompt-pwd’).html(‘请输入密码’);<br>                        return false;<br>                    } else {<br>                        $(‘.prompt-pwd’).html(‘’);<br>                        var result = captchaObj.getValidate();<br>                        if (!result) {<br>                            $(“.prompt-code”).html(‘请完成验证’).show();<br>                            setTimeout(function () {<br>                                $(“.prompt-code”).html(‘’).hide();<br>                            }, 2000);<br>                        } else {<br>                            $(‘.prompt-name’).html(‘’);<br>                            $(‘.prompt-pwd’).html(‘’);<br>                            $(‘.prompt-code’).html(‘’).hide();<br>                            var data = {<br>                                    Account: tel<br>                                    , Pwd: pwd<br>                                    , keepL: $(‘#auto’).prop(‘checked’) ? 1 : 0,<br>                                    geetest_challenge: result.geetest_challenge,<br>                                    geetest_validate: result.geetest_validate,<br>                                    geetest_seccode: result.geetest_seccode<br>                                };<br>                            Data.login(data, function (json) {<br>                                console.log(json);<br>                                if (json &amp;&amp; ‘resCode’ in json &amp;&amp; json.resCode == 0) {<br>                                    location.reload();<br>                                    //$(‘#login_modal_element’).hide();<br>                                } else {<br>                                    captchaObj.reset();<br>                                    $(‘.wrong-text’).html(json.resMsg).removeClass(‘dp-n’);<br>                                }<br>                            });<br>                        }<br>                    }<br>                }<br>                e.preventDefault();<br>            });</p>
 <pre><code>        // 将验证码加到id为captcha的元素里，同时会有三个input的值用于表单提交
         captchaObj.appendTo(&quot;#captcha&quot;);
         $(&apos;#captcha&apos;).find(&apos;.geetest_holder&apos;).eq(0).remove();
@@ -538,7 +538,7 @@
                 <a href="/archives/">
               
                   <span class="site-state-item-count">6</span>
-                  <span class="site-state-item-name">Artikel</span>
+                  <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
@@ -590,7 +590,7 @@
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
